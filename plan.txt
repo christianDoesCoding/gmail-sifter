@@ -1,1 +1,11 @@
-this is where I will put my plan for my code
+GMail sifting extention
+- It will go through the entire emails, and pull out company names, and number of emails, then display in order from highest to lowest
+
+- this will give the user insight regarding what companies are bogging down your address with unwanted emails
+
+- Once data is complete, it will generate a google sheets with data
+
+Stretch:
+- show amount of emails opened, in addition to number of emails
+
+this is another test
