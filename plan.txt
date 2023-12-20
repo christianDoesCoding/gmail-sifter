@@ -8,4 +8,3 @@ GMail sifting extention
 Stretch:
 - show amount of emails opened, in addition to number of emails
 
-this is another test
