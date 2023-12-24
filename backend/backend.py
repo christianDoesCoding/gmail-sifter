@@ -2,21 +2,17 @@ from flask import Flask, redirect, request
 import requests
 from oauthlib.oauth2 import WebApplicationClient
 import json
+import os
 
 app = Flask(__name__)
 
-GOOGLE_CLIENT_ID = "1054406157740-qh53eu7qlugm13srihbrq93utei0vud3.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET = "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"
+GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET")
 GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
 
 client = WebApplicationClient(GOOGLE_CLIENT_ID)
-
-"""
-{"installed":{"client_id":"1054406157740-qh53eu7qlugm13srihbrq93utei0vud3.apps.googleusercontent.com","project_id":"gmail-sifter","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"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","redirect_uris":["http://localhost"]}}
-"""
-
 
 @app.route("/login")
 def login():
