@@ -1,6 +1,9 @@
  body {
-    height: 100vh;
-    background-color: blue;
+    margin: 0;
+    padding: 0;
+    height: 98vh;
+    overflow: hidden;
+    background-color: lightblue;
  }
  
  .main {
@@ -28,5 +31,4 @@
   .sift-emails-button button {
     height: 25px;
     width: 150px;
-    /* Additional button styles */
   }
