@@ -1,6 +1,7 @@
 from flask import Flask, redirect, request
 import requests
 from oauthlib.oauth2 import WebApplicationClient
+import json
 
 app = Flask(__name__)
 
@@ -30,9 +31,9 @@ def login():
     return redirect(request_uri)
 
 """callback"""
-@app.route("/login/authenticate") 
+@app.route("/login/callback") 
 def callback():
-    code = requests.args.get("code")
+    code = request.args.get("code")
 
     # Find out what URL to hit to get tokens that allow you to ask for things on behalf of a user
     google_provider_cfg = requests.get(GOOGLE_DISCOVERY_URL).json()
@@ -75,5 +76,37 @@ def callback():
 
     return "User information retrieved successfully!"
 
+"""For local development, using ssl_context="adhoc" in app.run() is okay, but for a production environment, you should use a proper SSL certificate."""
 if __name__ == "__main__":
     app.run(ssl_context="adhoc")
+
+"""Need to add logic"""
+@app.errorhandler(ValueError)
+def handle_value_error(e):
+    print("{e.description}")
+    return "Invalid input!", 400
+
+@app.errorhandler(404)
+def page_not_found(e):
+    print("{e.description}")
+    return "404 Page Not Found", 404
+
+class OAuthError(Exception):
+    def __init__(self, description):
+        self.description = description
+
+# Then, use the standard errorhandler to catch this exception
+@app.errorhandler(OAuthError)
+def handle_oauth_error(e):
+    print("{e.description}")
+    app.logger.error(f"OAuth error: {e.description}")
+
+    # Redirect to a custom error page or return a custom error message
+    return f"OAuth error: {e.description}", 500
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    print("{e.description}")
+    return "500 Internal Server Error", 500
+
