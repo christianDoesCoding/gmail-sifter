@@ -1,6 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { BackendService } from //'path to backend service'
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,17 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'Gmail Sifter';
 
+  constructor(private backendService: BackendService) {}
+
   gmailAuthenticate() {
     console.log('Button Clicked')
+    this.backendService.authenticate().subscribe(
+      (response: string) => { //may not be a string 
+        console.log('authentication successful', response)
+      },
+      (error: any) => {
+        console.log('authentication failed', error)
+      }
+    );
   }
 }
