@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { BackendService } from '../../../../backend/backend.py'
+import { BackendService } from './backend.services'
 
 @Component({
   selector: 'app-root',
