@@ -19,7 +19,7 @@ export class AppComponent {
   gmailAuthenticate() {
     console.log('Button Clicked')
     this.backendService.authenticate().subscribe(
-      (response: string) => { //may not be a string 
+      (response: any) => { //need to edit response type
         console.log('authentication successful', response)
       },
       (error: any) => {
