@@ -10,6 +10,6 @@ export class BackendService {
   constructor(private http: HttpClient) { }
 
   authenticate() {
-    return this.http.get('http://localhost:4200/authenticate');
+    return this.http.get('http://localhost:5000/login');
   }
 }
