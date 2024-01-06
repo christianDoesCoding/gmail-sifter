@@ -79,15 +79,6 @@ if __name__ == "__main__":
     app.run(ssl_context="adhoc")
 
 """Need to add logic"""
-@app.errorhandler(ValueError)
-def handle_value_error(e):
-    print("{e.description}")
-    return "Invalid input!", 400
-
-@app.errorhandler(404)
-def page_not_found(e):
-    print("{e.description}")
-    return "404 Page Not Found", 404
 
 class OAuthError(Exception):
     def __init__(self, description):
@@ -107,4 +98,15 @@ def handle_oauth_error(e):
 def internal_server_error(e):
     print("{e.description}")
     return "500 Internal Server Error", 500
+
+
+@app.errorhandler(ValueError)
+def handle_value_error(e):
+    print("{e.description}")
+    return "Invalid input!", 400
+
+@app.errorhandler(404)
+def page_not_found(e):
+    print("{e.description}")
+    return "404 Page Not Found", 404
 
