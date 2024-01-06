@@ -7,5 +7,5 @@ where the different routes of the application will go
 { path: '/routeName', component: componentName }
 */
 export const routes: Routes = [
-    { path:'', component: AppComponent}, //remove '' path
+    { path: '/login/callback', component: AppComponent} //remove '' path
 ];
