@@ -79,7 +79,6 @@ if __name__ == "__main__":
     app.run(ssl_context="adhoc")
 
 """Need to add logic"""
-
 class OAuthError(Exception):
     def __init__(self, description):
         self.description = description
