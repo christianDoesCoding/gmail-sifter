@@ -6,6 +6,7 @@ import { BackendService } from './backend.services'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'Gmail Sifter';
 
@@ -13,13 +14,13 @@ export class AppComponent {
 
   gmailAuthenticate() {
     console.log('Button Clicked')
-    this.backendService.authenticate().subscribe(
-      (response: any) => { //need to edit response type
+    this.backendService.authenticate().subscribe({
+      next: (response: any) => { //need to edit response type
         console.log('authentication successful', response)
       },
-      (error: any) => {
+      error: (error: any) => {
         console.log('authentication failed', error)
       }
-    );
+    });
   }
 }
