@@ -14,7 +14,8 @@ const routes: Routes = [
     imports: [
       BrowserModule,
       HttpClientModule,
-      RouterModule.forRoot(routes)
+      RouterModule.forRoot(routing)
+      //changed route to routing. did not change anything, but leaving for rn
     ],
     providers: [],
     bootstrap: [AppComponent]
